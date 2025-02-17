@@ -156,7 +156,7 @@ def generate_key(message):
                 with open(KEYS_FILE, "a") as file:
                     file.write(f"{key} {expiration_date.strftime('%Y-%m-%d %H:%M:%S')}\n")
                 
-                response = f"🗝️ **Key generated successfully!**\nYour key is: {key}\nIt will expire on: {expiration_date.strftime('%Y-%m-%d %H:%M:%S')}"
+                response = f"🗝️ **Key generated successfully!**\nYour key is: `{key}`\nIt will expire on: {expiration_date.strftime('%Y-%m-%d %H:%M:%S')}"
             except ValueError:
                 response = "⚠️ **Invalid duration format!** Please specify like `/key generate 1day`."
         else:
@@ -238,8 +238,8 @@ def handle_attack(message):
                     command = ['/attack'] + command  # Prepend '/attack' to the command list
                 target, port, time_duration = command[1], int(command[2]), int(command[3])
 
-                if time_duration > 240:
-                    response = "❌ **Error:** Time interval must be less than 240 seconds."
+                if time_duration > 180:
+                    response = "❌ **Error:** Time interval must be less than 180 seconds."
                 else:
                     user_last_attack[user_id] = time.time()
                     start_attack_reply(message, target, port, time_duration)
