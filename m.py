@@ -140,7 +140,7 @@ def generate_key(message):
             with open(KEYS_FILE, "a") as file:
                 file.write(f"{key} {expiration_date.strftime('%Y-%m-%d %H:%M:%S')}\n")
             
-            response = f"🗝️ **Key generated successfully!**\nYour key is: {key}\nIt will expire on: {expiration_date.strftime('%Y-%m-%d %H:%M:%S')}"
+            response = f"🗝️ **Key generated successfully!**\nYour key is: `{key}`\nIt will expire on: {expiration_date.strftime('%Y-%m-%d %H:%M:%S')}"
         elif len(command) == 3 and command[1] == "generate" and command[2].endswith('day'):
             try:
                 # Parse the number of days from the command (e.g., "1day")
